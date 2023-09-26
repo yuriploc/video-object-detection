@@ -7,7 +7,15 @@
 # General application configuration
 import Config
 
-config :nx, default_backend: EXLA.Backend
+config :nx, :default_backend, {EXLA.Backend, client: :host}
+# config :nx, default_backend: EXLA.Backend
+# config :exla, :clients,
+#   host: [platform: :host]
+config :evision, unsupported_type_map: %{
+  {:s, 64} => {:f, 64},
+  {:u, 64} => {:f, 64},
+  {:u, 32} => {:f, 32}
+}
 
 # Configures the endpoint
 config :app, AppWeb.Endpoint,

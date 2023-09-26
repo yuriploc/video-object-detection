@@ -6,7 +6,7 @@ defmodule AppWeb.PageLive do
   use AppWeb, :live_view
 
   def mount(_params, _session, socket) do
-    path = Path.join(:code.priv_dir(:app), "video.mp4")
+    path = Path.join(:code.priv_dir(:app), "red-shirt.mp4")
 
     {:ok,
      socket
@@ -64,7 +64,7 @@ defmodule AppWeb.PageLive do
   ###########
 
   defp predict(serving, frame) do
-    tensor = frame |> Evision.Mat.to_nx() |> Nx.backend_transfer()
+    tensor = frame |> Evision.Mat.to_nx() |> Nx.backend_transfer({EXLA.Backend, client: :host})
 
     %{predictions: [%{label: label}]} = Nx.Serving.run(serving, tensor)
 

@@ -48,9 +48,9 @@ defmodule App.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:bumblebee, "~> 0.1.2"},
+      {:bumblebee, "~> 0.4.1"},
       {:exla, ">= 0.0.0"},
-      {:evision, "~> 0.1.27"}
+      {:evision, "~> 0.1.33"}
     ]
   end
 
